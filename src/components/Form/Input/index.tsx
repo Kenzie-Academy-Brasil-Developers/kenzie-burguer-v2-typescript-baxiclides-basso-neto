@@ -1,9 +1,15 @@
 import { StyledTextField } from '../../../styles/form';
 import { StyledParagraph } from '../../../styles/typography';
 
-const Input = () => (
+interface IInput{
+  label: string;
+  type: string;
+  
+}
+
+const Input = ({ label, type }:IInput) => (
   <fieldset>
-    <StyledTextField label='Teste' type='text' />
+    <StyledTextField label={label} type={type} />
     <StyledParagraph fontColor='red'>Erro</StyledParagraph>
   </fieldset>
 );
