@@ -6,6 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '../services/api';
 
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+}
+
 interface IProduct {
   id: number;
   name: string;
@@ -13,26 +19,34 @@ interface IProduct {
   price: number;
   img: string;
 }
+
+interface ISignUpForm{
+
+}
+
+// Interface para exportar todos os dados que vão no value
 interface IUserContextData {
-  userSignUp: (data:object) => Promise<void>;
-  userLogin: (data:object) => Promise<void>;
+  userSignUp: (data: object) => Promise<void>;
+  userLogin: (data: object) => Promise<void>;
   loadProducts: () => Promise<void>;
   productsList: IProduct[];
 }
 
-interface IUserContextProviderProps{
+interface IUserProviderProps {
   children: ReactNode;
 }
 
+export const UserContext = createContext<IUserContextData>(
+  {} as IUserContextData
+);
 
-export const UserContext = createContext<IUserContextData>({} as IUserContextData);
-
-const UserContextProvider = ({ children }: IUserContextProviderProps) => {
+const UserProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('@TOKEN')
+  const token = localStorage.getItem('@TOKEN');
   const headers = {
     Authorization: `Bearer ${token}`,
   };
+  const [user, setUser] = useState<IUser | null>(null);
   const [productsList, setProductsList] = useState<IProduct[]>([]);
 
   const userSignUp = async (data: object) => {
@@ -45,7 +59,7 @@ const UserContextProvider = ({ children }: IUserContextProviderProps) => {
     }
   };
 
-  const userLogin = async (data:object) => {
+  const userLogin = async (data: object) => {
     try {
       const response = await api.post('login', data);
       localStorage.setItem('@TOKEN', response.data.token);
@@ -65,10 +79,12 @@ const UserContextProvider = ({ children }: IUserContextProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ userSignUp, userLogin, loadProducts, productsList }}>
+    <UserContext.Provider
+      value={{ userSignUp, userLogin, loadProducts, productsList }}
+    >
       {children}
     </UserContext.Provider>
   );
 };
 
-export default UserContextProvider;
+export default UserProvider;
