@@ -12,6 +12,17 @@ interface IUser {
   email: string;
 }
 
+interface IUserLoginFormValues {
+  name: string;
+  email: string;
+}
+
+interface IUserSignUpFormValues {
+  email: string;
+  password: string;
+  name: string;
+}
+
 interface IProduct {
   id: number;
   name: string;
@@ -20,20 +31,21 @@ interface IProduct {
   img: string;
 }
 
-interface ISignUpForm{
-
+interface IUserProviderProps {
+  children: ReactNode;
 }
 
 // Interface para exportar todos os dados que vão no value
 interface IUserContextData {
-  userSignUp: (data: object) => Promise<void>;
-  userLogin: (data: object) => Promise<void>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  user: IUser | null;
+  userSignUp: (data: IUserSignUpFormValues) => Promise<void>;
+  userLogin: (data: IUserLoginFormValues) => Promise<void>;
+  userLogout: () => void;
   loadProducts: () => Promise<void>;
   productsList: IProduct[];
-}
-
-interface IUserProviderProps {
-  children: ReactNode;
+  token: string | null;
 }
 
 export const UserContext = createContext<IUserContextData>(
@@ -41,32 +53,44 @@ export const UserContext = createContext<IUserContextData>(
 );
 
 const UserProvider = ({ children }: IUserProviderProps) => {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<IUser | null>(null);
+  const [productsList, setProductsList] = useState<IProduct[]>([]);
   const navigate = useNavigate();
-  const token = localStorage.getItem('@TOKEN');
+  const token: string | null = localStorage.getItem('@TOKEN');
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  const [user, setUser] = useState<IUser | null>(null);
-  const [productsList, setProductsList] = useState<IProduct[]>([]);
 
-  const userSignUp = async (data: object) => {
+  const userSignUp = async (data: IUserSignUpFormValues) => {
     try {
       await api.post('users', data);
-      toast.success('Bem-vindo!');
+      toast.success('Cadastrado com sucesso!');
       navigate('/');
-    } catch (error) {
-      toast.error('Dados inválidos!');
-    }
-  };
-
-  const userLogin = async (data: object) => {
-    try {
-      const response = await api.post('login', data);
-      localStorage.setItem('@TOKEN', response.data.token);
-      navigate('/shop');
     } catch (error) {
       toast.error('Dados inválidos, tente novamente!');
     }
+  };
+
+  const userLogin = async (data: IUserLoginFormValues) => {
+    try {
+      setLoading(true);
+      const response = await api.post('login', data);
+      setUser(response.data.user);
+      localStorage.setItem('@TOKEN', response.data.acessToken);
+      toast.success('Bem-vindo!');
+      navigate('/shop');
+    } catch (error) {
+      toast.error('Dados inválidos, tente novamente!');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const userLogout = () => {
+    setUser(null);
+    localStorage.removeItem('@TOKEN');
+    navigate('/');
   };
 
   const loadProducts = async () => {
@@ -80,7 +104,17 @@ const UserProvider = ({ children }: IUserProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ userSignUp, userLogin, loadProducts, productsList }}
+      value={{
+        loading,
+        setLoading,
+        user,
+        userSignUp,
+        userLogin,
+        userLogout,
+        loadProducts,
+        productsList,
+        token,
+      }}
     >
       {children}
     </UserContext.Provider>
