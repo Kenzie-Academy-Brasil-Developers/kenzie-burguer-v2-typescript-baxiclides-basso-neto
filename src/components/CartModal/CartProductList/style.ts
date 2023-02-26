@@ -13,6 +13,21 @@ export const StyledCartProductList = styled.div`
       overflow: auto;
    }
 
+   div > button{
+  
+    border-radius: 8px;
+    color: #828282;
+    background: #E0E0E0;
+    padding: .5rem;
+    transition: 0.5s ease;
+    
+    :hover{
+      color: #E0E0E0;
+      background-color: #828282;
+    }
+
+   }
+
    .totalBox {
       padding: 20px 0;
       display: flex;

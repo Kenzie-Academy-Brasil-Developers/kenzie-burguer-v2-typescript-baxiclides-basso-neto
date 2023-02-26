@@ -1,38 +1,52 @@
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useContext } from 'react';
 import Input from '../Input';
 import { StyledButton } from '../../../styles/button';
 import { StyledForm } from '../../../styles/form';
-import { useContext } from 'react';
-
-interface IUserRegister{
-  email: string;
-  password: string;
-  name: string
-
-}
+import {
+  IUserSignUpFormValues,
+  UserContext,
+} from '../../../providers/UserContext';
 
 const RegisterForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IUserSignUpFormValues>();
 
-  const {} = useContext({})
+  const { userSignUp } = useContext(UserContext);
 
-  const { register, handleSubmit } = useForm<IUserRegister>()
+  const submit: SubmitHandler<IUserSignUpFormValues> = (data) => {
+    userSignUp(data);
+  };
 
-const onSubmit = (data: IUserRegister) =>{
-  // eslint-disable-next-line no-console
-  console.log(data)
-}
+  return (
+    <StyledForm onSubmit={handleSubmit(submit)}>
+      <Input
+        label='Email'
+        register={register('email')}
+        type='email'
+        errors={errors.email}
+      />
+      <Input
+        label='Password'
+        register={register('password')}
+        type='password'
+        errors={errors.password}
+      />
+      <Input
+        label='Nome'
+        register={register('name')}
+        type='text'
+        errors={errors.name}
+      />
 
-  return(
-  <StyledForm onSubmit={handleSubmit(onSubmit)}>
-    <Input label='email' type='text' {...register('email')} />
-    <Input label='password' type='password' {...register('password')} />
-    <Input label='nome' type='text' {...register('name')} />
-    <Input label='nome' type='password' />
-    <StyledButton type='submit' $buttonSize='default' $buttonStyle='gray'>
-      Cadastrar
-    </StyledButton>
-  </StyledForm>
-);
-  }
+      <StyledButton type='submit' $buttonSize='default' $buttonStyle='gray'>
+        Cadastrar
+      </StyledButton>
+    </StyledForm>
+  );
+};
 
 export default RegisterForm;

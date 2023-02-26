@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define, import/no-duplicates
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,23 +12,15 @@ interface IUser {
   email: string;
 }
 
-interface IUserLoginFormValues {
-  name: string;
-  email: string;
-}
-
-interface IUserSignUpFormValues {
+export interface IUserSignUpFormValues {
   email: string;
   password: string;
   name: string;
 }
 
-interface IProduct {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  img: string;
+export interface IUserLoginFormValues {
+  email: string;
+  password: string;
 }
 
 interface IUserProviderProps {
@@ -43,11 +35,7 @@ interface IUserContextData {
   userSignUp: (data: IUserSignUpFormValues) => Promise<void>;
   userLogin: (data: IUserLoginFormValues) => Promise<void>;
   userLogout: () => void;
-  loadProducts: () => Promise<void>;
-  productsList: IProduct[];
-  token: string | null;
 }
-
 export const UserContext = createContext<IUserContextData>(
   {} as IUserContextData
 );
@@ -55,12 +43,7 @@ export const UserContext = createContext<IUserContextData>(
 const UserProvider = ({ children }: IUserProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser | null>(null);
-  const [productsList, setProductsList] = useState<IProduct[]>([]);
   const navigate = useNavigate();
-  const token: string | null = localStorage.getItem('@TOKEN');
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
 
   const userSignUp = async (data: IUserSignUpFormValues) => {
     try {
@@ -77,7 +60,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(true);
       const response = await api.post('login', data);
       setUser(response.data.user);
-      localStorage.setItem('@TOKEN', response.data.acessToken);
+      localStorage.setItem('@TOKEN', response.data.accessToken);
       toast.success('Bem-vindo!');
       navigate('/shop');
     } catch (error) {
@@ -93,15 +76,6 @@ const UserProvider = ({ children }: IUserProviderProps) => {
     navigate('/');
   };
 
-  const loadProducts = async () => {
-    try {
-      const response = await api.get('products', { headers });
-      setProductsList(response.data);
-    } catch (error) {
-      toast.error('Erro ao carregar produtos');
-    }
-  };
-
   return (
     <UserContext.Provider
       value={{
@@ -111,9 +85,6 @@ const UserProvider = ({ children }: IUserProviderProps) => {
         userSignUp,
         userLogin,
         userLogout,
-        loadProducts,
-        productsList,
-        token,
       }}
     >
       {children}
