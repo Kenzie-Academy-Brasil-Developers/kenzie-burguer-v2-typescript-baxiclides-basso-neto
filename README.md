@@ -8,11 +8,11 @@
 <h1 align="center">Kenzie Burger - TypeScript</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
+  <img alt="MIT LICENSE" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
 
 <h4 align="center"> 
 	🚧  Kenzie Burger  🚀 Under construction...  🚧
