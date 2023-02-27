@@ -55,7 +55,9 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
 
   const addToCart = (id: number) => {
     const productToAdd = productsList.find((product) => product.id === id);
+    if (productToAdd){
     setCartProducts([...cartProducts, productToAdd]);
+    }
   };
 
   return (
