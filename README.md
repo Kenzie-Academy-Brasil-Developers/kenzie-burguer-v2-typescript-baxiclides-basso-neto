@@ -1,9 +1,8 @@
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Kenzie Burger V2" />
 
-  &#xa0;
+&#xa0;
 
-  <!-- <a href="https://kenzieburgerv2.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">Kenzie Burger - TypeScript</h1>
@@ -13,22 +12,11 @@
 
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
-
   <img alt="License" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burger-v2?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/kenzie-burger-v2?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/kenzie-burger-v2?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/kenzie-burger-v2?color=56BEB8" /> -->
-</p>
-
-<!-- Status -->
 
 <h4 align="center"> 
 	🚧  Kenzie Burger  🚀 Under construction...  🚧
-</h4> 
+</h4>
 
 <hr>
 
@@ -44,17 +32,19 @@
 
 <br>
 
-## :dart: About ##
+## :dart: About
 
-Describe your project
+E-commerce App created with TypeScript in ReactJS
 
-## :sparkles: Features ##
+Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-b-baxiclides-basso-neto.vercel.app/](https://kenzie-burguer-v2-typescript-baxiclides-b-baxiclides-basso-neto.vercel.app/)
+
+## :sparkles: Features
 
 :heavy_check_mark: User registration and authentication
 :heavy_check_mark: Product search
 :heavy_check_mark: Shopping cart
 
-## :rocket: Technologies ##
+## :rocket: Technologies
 
 The following tools were used in this project:
 
@@ -67,11 +57,11 @@ The following tools were used in this project:
 - [Styled-components](https://styled-components.com/)
 - [Media Queries](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requirements
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 ```bash
 # Clone this project
@@ -89,10 +79,9 @@ $ yarn start
 # The server will initialize in the <http://localhost:3000>
 ```
 
-## :memo: License ##
+## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](license) file.
-
 
 Made with :heart: by <a href="https://github.com/baxiclides-basso-neto" target="_blank">Baxiclides Basso Neto</a>
 
