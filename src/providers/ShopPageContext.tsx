@@ -1,8 +1,15 @@
 // eslint-disable-next-line no-use-before-define
 import React, { createContext, ReactNode, useState } from 'react';
 import { toast } from 'react-toastify';
-import { IProduct } from '../components/ProductList/ProductCard';
 import api from '../services/api';
+
+export interface IProduct {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  img: string;
+}
 
 interface ICartProduct {
   id: number;
@@ -25,6 +32,10 @@ interface ShopPageContextData {
   loading: boolean;
   cartProducts: ICartProduct[];
   setCartProducts: React.Dispatch<React.SetStateAction<ICartProduct[]>>;
+  handleSearch: (event: React.FormEvent<HTMLFormElement>) => void;
+  searchTerm: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  filteredProducts: IProduct[];
 }
 
 export const ShopPageContext = createContext<ShopPageContextData>(
@@ -36,6 +47,22 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
   const token = localStorage.getItem('@TOKEN');
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Se searchTerm estiver vazio, ele inclui todos os itens na lista filteredProducts
+  const filteredProducts = productsList.filter((product) =>
+    searchTerm === ''
+      ? true
+      : product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
 
   const loadProducts = async () => {
     try {
@@ -55,8 +82,8 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
 
   const addToCart = (id: number) => {
     const productToAdd = productsList.find((product) => product.id === id);
-    if (productToAdd){
-    setCartProducts([...cartProducts, productToAdd]);
+    if (productToAdd) {
+      setCartProducts([...cartProducts, productToAdd]);
     }
   };
 
@@ -71,6 +98,10 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
         loading,
         cartProducts,
         setCartProducts,
+        handleSearch,
+        searchTerm,
+        handleChange,
+        filteredProducts,
       }}
     >
       {children}

@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
-// import { toast } from 'react-toastify';
+import { useContext, useEffect } from 'react';
 import { StyledProductCard } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
 import { ShopPageContext } from '../../../providers/ShopPageContext';
-// import api from '../../../services/api';
 
 export interface IProduct {
   id: number;
@@ -15,7 +13,7 @@ export interface IProduct {
 }
 
 const ProductCard = () => {
-  const { setModal, productsList, loadProducts, addToCart, loading } =
+  const { setModal, loadProducts, addToCart, loading, filteredProducts } =
     useContext(ShopPageContext);
 
   useEffect(() => {
@@ -30,7 +28,7 @@ const ProductCard = () => {
           Carregando...
         </h2>
       ) : (
-        productsList.map((product) => (
+        filteredProducts.map((product) => (
           <StyledProductCard key={product.id}>
             <div className='imageBox'>
               <img src={product.img} alt={product.name} />

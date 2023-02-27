@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define, import/no-duplicates
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
