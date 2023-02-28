@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define, import/no-duplicates
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -69,6 +69,23 @@ const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(false);
     }
   };
+
+  // type pois não é um objeto(Interface é usada apenas para objetos)
+  type UserAutoLoginFunction = () => void;
+
+  const userAutoLogin: UserAutoLoginFunction = () => {
+    const token: string | null = localStorage.getItem('@TOKEN');
+    if (token) {
+      navigate('shop');
+    } else {
+      localStorage.removeItem('@TOKEN');
+    }
+  };
+
+  // o useEffect aqui é usado que a função autoLogin seja executada quando o componente é montado pela primeira vez, quando a página é carregada.
+  useEffect(() => {
+    userAutoLogin();
+  }, []);
 
   const userLogout = () => {
     setUser(null);

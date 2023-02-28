@@ -55,12 +55,15 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
       ? true
       : product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  // React.FormEvent define o tipo de evento que ocorreu em um elemento de formulário HTML(HTMLFormElemtn)
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    // preventDefault para que a página não seja atualizada na busca
     event.preventDefault();
   };
-
+  //
+  // o evento de mudança(changeEvent) está sendo monitorado no elemento HTML de input(HTMLInputElement)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // o valor do campo de pesquisa é atribuido ao searchTerm
     setSearchTerm(event.target.value);
   };
 
