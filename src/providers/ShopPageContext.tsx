@@ -36,6 +36,7 @@ interface ShopPageContextData {
   searchTerm: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filteredProducts: IProduct[];
+  productsSum: number;
 }
 
 export const ShopPageContext = createContext<ShopPageContextData>(
@@ -48,6 +49,11 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const productsSum = cartProducts.reduce(
+    (accumulator, product) => accumulator + product.price,
+    0
+  );
 
   // Se searchTerm estiver vazio, ele inclui todos os itens na lista filteredProducts
   const filteredProducts = productsList.filter((product) =>
@@ -70,7 +76,7 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      const response = await api.get('products', {
+      const response = await api.get<IProduct[]>('products', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -85,7 +91,17 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
 
   const addToCart = (id: number) => {
     const productToAdd = productsList.find((product) => product.id === id);
+
     if (productToAdd) {
+      // metodo some para saber se já existe um produto como mesmo ID no carrinho
+      const productAlreadyInCart = cartProducts.some(
+        (product) => product.id === id
+      );
+      if (productAlreadyInCart) {
+        toast.error('Produto já está no carrinho!');
+        setModal(false);
+        return;
+      }
       setCartProducts([...cartProducts, productToAdd]);
     }
   };
@@ -105,6 +121,7 @@ const ShopPageProvider = ({ children }: ShopPageProviderProps) => {
         searchTerm,
         handleChange,
         filteredProducts,
+        productsSum,
       }}
     >
       {children}

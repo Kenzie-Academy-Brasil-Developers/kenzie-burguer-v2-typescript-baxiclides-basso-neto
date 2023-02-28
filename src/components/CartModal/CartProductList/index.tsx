@@ -7,22 +7,13 @@ import { StyledParagraph } from '../../../styles/typography';
 import { ShopPageContext } from '../../../providers/ShopPageContext';
 
 const CartProductList = () => {
-  const { cartProducts, setCartProducts, setModal } =
+  const { productsSum, setCartProducts, setModal } =
     useContext(ShopPageContext);
-
-  const productsSum = cartProducts.reduce(
-    (accumulator, product) => accumulator + product.price,
-    0
-  );
 
   return (
     <StyledCartProductList>
       <ul>
-        {cartProducts.length < 1 ? (
-          <h1>Sua sacola está vazia</h1>
-        ) : (
-          <CartProductCard />
-        )}
+        <CartProductCard />
       </ul>
       <div className='totalBox'>
         <button type='button' onClick={() => setModal(false)}>

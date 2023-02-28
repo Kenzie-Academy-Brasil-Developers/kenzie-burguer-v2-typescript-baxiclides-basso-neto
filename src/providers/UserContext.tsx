@@ -47,7 +47,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
 
   const userSignUp = async (data: IUserSignUpFormValues) => {
     try {
-      await api.post('users', data);
+      await api.post<IUserLoginFormValues>('users', data);
       toast.success('Cadastrado com sucesso!');
       navigate('/');
     } catch (error) {
@@ -58,7 +58,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
   const userLogin = async (data: IUserLoginFormValues) => {
     try {
       setLoading(true);
-      const response = await api.post('login', data);
+      const response = await api.post<IUserLoginFormValues>('login', data);
       setUser(response.data.user);
       localStorage.setItem('@TOKEN', response.data.accessToken);
       toast.success('Bem-vindo!');

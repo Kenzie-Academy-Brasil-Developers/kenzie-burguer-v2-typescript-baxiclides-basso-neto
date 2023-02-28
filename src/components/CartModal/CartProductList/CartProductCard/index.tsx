@@ -24,13 +24,14 @@ const CartProductCard = () => {
             <StyledTitle tag='h3' $fontSize='three'>
               {product.name}
             </StyledTitle>
-            <button
-              onClick={() => handleRemoveProduct(product.id)}
-              type='button'
-              aria-label='Remover'
-            >
-              <MdDelete size={24} />
-            </button>
+            <div>
+              <button
+                onClick={() => handleRemoveProduct(product.id)}
+                type='button'
+              >
+                <MdDelete size={24} />
+              </button>
+            </div>
           </div>
         </StyledCartProductCard>
       ))}
