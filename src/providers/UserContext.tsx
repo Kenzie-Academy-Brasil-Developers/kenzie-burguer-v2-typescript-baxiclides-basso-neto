@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define, import/no-duplicates
-import React, { useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +19,8 @@ export interface IUserSignUpFormValues {
 }
 
 export interface IUserLoginFormValues {
+  accessToken: string;
+  user: SetStateAction<IUser | null>;
   email: string;
   password: string;
 }
