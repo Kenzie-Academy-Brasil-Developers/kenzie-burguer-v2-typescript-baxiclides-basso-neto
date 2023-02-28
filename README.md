@@ -35,7 +35,7 @@
 
 E-commerce App created with TypeScript in ReactJS
 
-Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/shop](https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/shop)
+Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/](https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/)
 
 ## :sparkles: Features
 
