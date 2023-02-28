@@ -8,14 +8,13 @@
 <h1 align="center">Kenzie Burger - TypeScript</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
+ <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8&logo=typescript">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
+ <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=green">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=green">
 
-  <img alt="MIT LICENSE" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
-
+<img alt="GitHub license" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=green">
 
 <hr>
 
