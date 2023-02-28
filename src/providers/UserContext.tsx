@@ -81,6 +81,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
       navigate('shop');
     } else {
       localStorage.removeItem('@TOKEN');
+      navigate('/')
     }
   };
 

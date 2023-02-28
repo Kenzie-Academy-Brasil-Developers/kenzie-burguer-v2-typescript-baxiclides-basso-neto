@@ -12,11 +12,10 @@
 
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
 
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
+
   <img alt="MIT LICENSE" src="https://img.shields.io/github/license/Kenzie-Academy-Brasil-Developers/kenzie-burguer-v2-typescript-baxiclides-basso-neto?color=56BEB8">
 
-<h4 align="center"> 
-	🚧  Kenzie Burger  🚀 Under construction...  🚧
-</h4>
 
 <hr>
 
@@ -36,13 +35,16 @@
 
 E-commerce App created with TypeScript in ReactJS
 
-Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-b-baxiclides-basso-neto.vercel.app/](https://kenzie-burguer-v2-typescript-baxiclides-b-baxiclides-basso-neto.vercel.app/)
+Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/shop](https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/shop)
 
 ## :sparkles: Features
 
 :heavy_check_mark: User registration and authentication
 :heavy_check_mark: Product search
 :heavy_check_mark: Shopping cart
+:heavy_check_mark: AutoLogin
+:heavy_check_mark: Add and delete product
+:heavy_check_mark: Update total products
 
 ## :rocket: Technologies
 
@@ -55,6 +57,7 @@ The following tools were used in this project:
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 - [Context-API](https://pt-br.reactjs.org/docs/context.html)
 - [Styled-components](https://styled-components.com/)
+- [Mui-material](https://mui.com/)
 - [Media Queries](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries)
 
 ## :white_check_mark: Requirements
