@@ -33,7 +33,9 @@
 
 ## :dart: About
 
-E-commerce App created with TypeScript in ReactJS
+This is an E-commerce App built using ReactJS with TypeScript and integrates with the Hamburgueria Kenzie V2 API. The project uses various technologies such as Axios, React-hook-form, React-toastify, UseEffect, UseState, Context-API, Styled-components, and Media query.
+
+The app includes features such as user registration and authentication, product search, shopping cart, auto-login, adding and deleting products, and updating total products. The project is hosted on GitHub and Vercel, and can be accessed via the links provided in the comments.
 
 Link to the project on Vercel: [https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/](https://kenzie-burguer-v2-typescript-baxiclides-basso-neto.vercel.app/)
 
