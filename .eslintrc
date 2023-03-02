@@ -20,7 +20,8 @@
     "react",
     "@typescript-eslint"
   ],
-  "rules": {
+  "rules":
+   {
     "import/order": [
       "error",
       {
@@ -89,3 +90,4 @@
     }
   }
 }
+

@@ -19,8 +19,6 @@ const LoginForm = () => {
 
   const submit: SubmitHandler<IUserLoginFormValues> = (data) => {
     userLogin(data);
-    // eslint-disable-next-line no-console
-    console.log(data);
   };
 
   return (

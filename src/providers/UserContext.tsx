@@ -53,7 +53,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
       toast.success('Cadastrado com sucesso!');
       navigate('/');
     } catch (error) {
-      toast.error('Dados inválidos, tente novamente!');
+      toast.error('Esse e-mail já possui cadastro!');
     }
   };
 
